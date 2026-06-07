@@ -16,7 +16,7 @@
 #define WS_0      2  
 #define SD_0      32
 
-// --- PINES HACIA EL myRIO / LABVIEW ---
+// --- PINES HACIA EL myRIO / LABVIEW --- (Por cambiar a I2C)
 #define RX_MYRIO  5
 #define TX_MYRIO  4 
 
