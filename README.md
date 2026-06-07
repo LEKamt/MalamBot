@@ -3,3 +3,7 @@ Firmware of MalamBot, which is an open-source system for non-contact inspection 
 
 ![GENERAL_SCHEME](GENERAL_SCHEME.jpg)
 
+
+[Download FlowChart_myRIO](src/myRIO-1900/documentation/FlowChart_myRIO.pdf)
+
+
