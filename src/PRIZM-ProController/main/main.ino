@@ -47,14 +47,14 @@ void IRAM_ATTR onControlTimer() {
 
 // >>> Aplicación de comandos a los actuadores
 void aplicarActuadores() {
-  // prizm.setServoPosition(1, servo_cmd);
-  // delay(10);
   // prizm.setMotorSpeed(1, (int)(wl_cmd * rad2deg));
-  // delay(10);
+  // delay(1);
   // prizm.setMotorSpeed(2, (int)(wr_cmd * rad2deg));
-  // delay(10);
+  // delay(1);
   // prizm.setMotorPower(3, riel_cmd);
-  // delay(10);
+  // delay(1);
+  // prizm.setServoPosition(1, servo_cmd);
+  // delay(1);
 
   Serial.print(wr_cmd);
   Serial.print(", ");
@@ -84,7 +84,6 @@ void setup() {
   }
 
   // >>> Reducir tiempo de medición a 20 ms
-  // lox.setMeasurementTimingBudgetMicroSeconds(20000);
   Serial.println("VL53L0X OK");
 
   // >>> Configurar PRIZM
@@ -110,22 +109,24 @@ void loop() {
 
     if (c == ' ') {
       bufferRX.trim();
-      int idxB = bufferRX.indexOf('A');
-      int idxC = bufferRX.indexOf('B');
-      int idxD = bufferRX.indexOf('C');
-      int idxE = bufferRX.indexOf('D');
+      int idxA = bufferRX.indexOf('A');
+      int idxB = bufferRX.indexOf('B');
+      int idxC = bufferRX.indexOf('C');
+      int idxD = bufferRX.indexOf('D');
+      int idxE = bufferRX.indexOf('E');
 
-      if (idxB != -1 && idxC != -1 && idxD != -1 && idxE != -1) {
-        // >> Leer y saturar las variables de control
-        int raw_wr = bufferRX.substring(idxB + 1, idxC).toFloat() / 1000.0f;
-        int raw_wl = bufferRX.substring(idxC + 1, idxD).toFloat() / 1000.0f;
-        float powerRaw = bufferRX.substring(idxD + 1, idxE).toInt();
-        float servoRaw = bufferRX.substring(idxE + 1).toInt();
+      if (idxA != -1 && idxB != -1 && idxC != -1 && idxD != -1) {
+        // >> Leer las variables de control
+        int raw_wr = bufferRX.substring(idxA + 1, idxB).toFloat() / 1000.0f;
+        int raw_wl = bufferRX.substring(idxB + 1, idxC).toFloat() / 1000.0f;
+        float powerRaw = bufferRX.substring(idxC + 1, idxD).toFloat() / 1000.0f;
+        float servoRaw = bufferRX.substring(idxD + 1, idxE).toFloat() / 1000.0f;
 
-        servo_cmd = constrain(servoRaw / 1000.0f, 0, 180);
-        riel_cmd = constrain(powerRaw / 1000.0f, -20, 20);
-        wl_cmd = constrain(raw_wl, -12.566f, 12.566f);
+        // >> Saturar las variables de control
         wr_cmd = constrain(raw_wr, -12.566f, 12.566f);
+        wl_cmd = constrain(raw_wl, -12.566f, 12.566f);
+        riel_cmd = constrain(int(powerRaw), -20, 20);
+        servo_cmd = constrain(int(servoRaw), 0, 180);
       }
       bufferRX = "";
     } else {

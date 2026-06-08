@@ -26,7 +26,6 @@
 			</Item>
 			<Item Name="myRIO Project Documentation.html" Type="Document" URL="../documentation/myRIO Project Documentation.html"/>
 		</Item>
-		<Item Name="Griper_Control_PID.vi" Type="VI" URL="../../SubVIs/Griper_Control_PID.vi"/>
 		<Item Name="Test_Detections.vi" Type="VI" URL="../Test_Detections.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
