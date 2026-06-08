@@ -75,7 +75,7 @@ void setup() {
   }
 
   // >>> Reducir tiempo de medición a 20 ms
-  lox.setMeasurementTimingBudgetMicroSeconds(20000);
+  // lox.setMeasurementTimingBudgetMicroSeconds(20000);
   Serial.println("VL53L0X OK");
 
   // >>> Configurar PRIZM
@@ -169,6 +169,7 @@ void loop() {
         Serial1.print(Encoder2 * 1000.0f, 0);
         Serial1.print('F');
         Serial1.print("\r\n");
+
         sensorStep = SensorStep::TOF;  // Reiniciar ciclo
         break;
     }
