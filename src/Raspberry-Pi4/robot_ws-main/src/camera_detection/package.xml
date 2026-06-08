@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>camera_detection</name>
+  <version>0.0.1</version>
+  <description>Pipeline de detección de tuberías (panorama + Roboflow)</description>
+  <maintainer email="tu@email.com">Tu Nombre</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>camera_detection_interfaces</depend>
+  <depend>libopencv-dev</depend>
+  <depend>python3-opencv</depend>
+  <depend>python3-requests</depend>
+  <depend>v4l-utils</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

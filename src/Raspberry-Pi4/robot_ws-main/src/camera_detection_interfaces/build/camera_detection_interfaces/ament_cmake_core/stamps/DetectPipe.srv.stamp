@@ -1,0 +1,6 @@
+---
+bool found
+float32 angle
+float32 confidence
+int32 num_pipes
+string message

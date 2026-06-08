@@ -1,0 +1,6 @@
+{
+  "package_name": "camera_detection_interfaces",
+  "non_idl_tuples": [
+    "/home/caleb/Documents/robot_ws/camera_detection_interfaces:srv/DetectPipe.srv"
+  ]
+}

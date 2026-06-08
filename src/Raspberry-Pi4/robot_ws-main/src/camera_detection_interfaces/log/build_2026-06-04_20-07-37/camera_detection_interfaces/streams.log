@@ -1,0 +1,35 @@
+[0.008s] Invoking command in '/home/caleb/Documents/robot_ws/camera_detection_interfaces/build/camera_detection_interfaces': /usr/bin/cmake /home/caleb/Documents/robot_ws/camera_detection_interfaces -DCMAKE_INSTALL_PREFIX=/home/caleb/Documents/robot_ws/camera_detection_interfaces/install/camera_detection_interfaces
+[0.019s] -- Found rosidl_default_generators: 1.2.1 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.019s] -- Found ament_cmake_core: 1.3.14 (/opt/ros/humble/share/ament_cmake_core/cmake)
+[0.116s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.118s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.145s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.304s] Error parsing '/home/caleb/Documents/robot_ws/camera_detection_interfaces/package.xml':
+[0.335s] Traceback (most recent call last):
+[0.336s]   File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 150, in <module>
+[0.336s]     main()
+[0.336s]   File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 53, in main
+[0.336s]     raise e
+[0.336s]   File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 49, in main
+[0.336s]     package = parse_package_string(
+[0.336s]   File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 788, in parse_package_string
+[0.336s]     pkg.validate(warnings=warnings)
+[0.336s]   File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 330, in validate
+[0.336s]     raise InvalidPackage('\n'.join(errors), self.filename)
+[0.336s] catkin_pkg.package.InvalidPackage: Error(s) in package '/home/caleb/Documents/robot_ws/camera_detection_interfaces/package.xml':
+[0.336s] Package 'camera_detection_interfaces' must declare at least one maintainer
+[0.347s] [31mCMake Error at /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):
+[0.347s]   execute_process(/usr/bin/python3
+[0.347s]   /opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py
+[0.347s]   /home/caleb/Documents/robot_ws/camera_detection_interfaces/package.xml
+[0.347s]   /home/caleb/Documents/robot_ws/camera_detection_interfaces/build/camera_detection_interfaces/ament_cmake_core/package.cmake)
+[0.347s]   returned error code 1
+[0.347s] Call Stack (most recent call first):
+[0.348s]   /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+[0.348s]   /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:226 (ament_package_xml)
+[0.348s]   CMakeLists.txt:6 (rosidl_generate_interfaces)
+[0.348s] 
+[0.348s] [0m
+[0.348s] -- Configuring incomplete, errors occurred!
+[0.348s] See also "/home/caleb/Documents/robot_ws/camera_detection_interfaces/build/camera_detection_interfaces/CMakeFiles/CMakeOutput.log".
+[0.353s] Invoked command in '/home/caleb/Documents/robot_ws/camera_detection_interfaces/build/camera_detection_interfaces' returned '1': /usr/bin/cmake /home/caleb/Documents/robot_ws/camera_detection_interfaces -DCMAKE_INSTALL_PREFIX=/home/caleb/Documents/robot_ws/camera_detection_interfaces/install/camera_detection_interfaces

@@ -47,14 +47,23 @@ void IRAM_ATTR onControlTimer() {
 
 // >>> Aplicación de comandos a los actuadores
 void aplicarActuadores() {
-  prizm.setServoPosition(1, servo_cmd);
-  delay(1);
-  prizm.setMotorSpeed(1, (int)(wl_cmd * rad2deg));
-  delay(1);
-  prizm.setMotorSpeed(2, (int)(wr_cmd * rad2deg));
-  delay(1);
-  prizm.setMotorPower(3, riel_cmd);
-  delay(1);
+  // prizm.setServoPosition(1, servo_cmd);
+  // delay(10);
+  // prizm.setMotorSpeed(1, (int)(wl_cmd * rad2deg));
+  // delay(10);
+  // prizm.setMotorSpeed(2, (int)(wr_cmd * rad2deg));
+  // delay(10);
+  // prizm.setMotorPower(3, riel_cmd);
+  // delay(10);
+
+  Serial.print(wr_cmd);
+  Serial.print(", ");
+  Serial.print(wl_cmd);
+  Serial.print(", ");
+  Serial.print(riel_cmd);
+  Serial.print(", ");
+  Serial.print(servo_cmd);
+  Serial.print("\n");
 }
 
 
@@ -63,7 +72,7 @@ void setup() {
   Serial.begin(115200);
 
   // >>> Buffer de recepción UART1
-  Serial1.setRxBufferSize(512);
+  // Serial1.setRxBufferSize(512);
   Serial1.begin(115200, SERIAL_8N1, RX_PIN, TX_PIN);
 
   // >>> VL53L0X
@@ -98,19 +107,20 @@ void loop() {
   // >>> 1. Procesar recepción UART
   while (Serial1.available() > 0) {
     char c = Serial1.read();
-    if (c == '\n') {
+
+    if (c == ' ') {
       bufferRX.trim();
-      int idxB = bufferRX.indexOf('B');
-      int idxC = bufferRX.indexOf('C');
-      int idxD = bufferRX.indexOf('D');
-      int idxE = bufferRX.indexOf('E');
+      int idxB = bufferRX.indexOf('A');
+      int idxC = bufferRX.indexOf('B');
+      int idxD = bufferRX.indexOf('C');
+      int idxE = bufferRX.indexOf('D');
 
       if (idxB != -1 && idxC != -1 && idxD != -1 && idxE != -1) {
         // >> Leer y saturar las variables de control
-        int servoRaw = bufferRX.substring(idxB + 1, idxC).toInt();
-        int powerRaw = bufferRX.substring(idxC + 1, idxD).toInt();
-        float raw_wl = bufferRX.substring(idxD + 1, idxE).toFloat() / 1000.0f;
-        float raw_wr = bufferRX.substring(idxE + 1).toFloat() / 1000.0f;
+        int raw_wr = bufferRX.substring(idxB + 1, idxC).toFloat() / 1000.0f;
+        int raw_wl = bufferRX.substring(idxC + 1, idxD).toFloat() / 1000.0f;
+        float powerRaw = bufferRX.substring(idxD + 1, idxE).toInt();
+        float servoRaw = bufferRX.substring(idxE + 1).toInt();
 
         servo_cmd = constrain(servoRaw / 1000.0f, 0, 180);
         riel_cmd = constrain(powerRaw / 1000.0f, -20, 20);

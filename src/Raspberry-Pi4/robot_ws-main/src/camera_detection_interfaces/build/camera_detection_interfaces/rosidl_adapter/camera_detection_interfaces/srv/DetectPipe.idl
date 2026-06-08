@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from camera_detection_interfaces/srv/DetectPipe.srv
+// generated code does not contain a copyright notice
+
+
+module camera_detection_interfaces {
+  module srv {
+    struct DetectPipe_Request {
+      uint8 structure_needs_at_least_one_member;
+    };
+    struct DetectPipe_Response {
+      boolean found;
+
+      float angle;
+
+      float confidence;
+
+      int32 num_pipes;
+
+      string message;
+    };
+  };
+};
