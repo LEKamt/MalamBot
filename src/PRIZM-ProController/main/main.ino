@@ -47,14 +47,14 @@ void IRAM_ATTR onControlTimer() {
 
 // >>> Aplicación de comandos a los actuadores
 void aplicarActuadores() {
-  // prizm.setMotorSpeed(1, (int)(wl_cmd * rad2deg));
-  // delay(1);
-  // prizm.setMotorSpeed(2, (int)(wr_cmd * rad2deg));
-  // delay(1);
-  // prizm.setMotorPower(3, riel_cmd);
-  // delay(1);
-  // prizm.setServoPosition(1, servo_cmd);
-  // delay(1);
+  prizm.setMotorSpeed(1, (int)(wl_cmd * rad2deg));
+  delay(1);
+  prizm.setMotorSpeed(2, (int)(wr_cmd * rad2deg));
+  delay(1);
+  prizm.setMotorPower(3, riel_cmd);
+  delay(1);
+  prizm.setServoPosition(1, servo_cmd);
+  delay(1);
 
   Serial.print(wr_cmd);
   Serial.print(", ");
@@ -103,10 +103,10 @@ void setup() {
 
 // -------------------------------------------- BUCLE PRINCIPAL --------------------------------------------
 void loop() {
+
   // >>> 1. Procesar recepción UART
   while (Serial1.available() > 0) {
     char c = Serial1.read();
-
     if (c == ' ') {
       bufferRX.trim();
       int idxA = bufferRX.indexOf('A');
